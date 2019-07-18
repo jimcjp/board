@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>刪除學生</title>
+</head>
+<body>
+<form action="/delstudent/" method="POST">
+    {% csrf_token %}
+    <p>刪除student資料</p>
+    <div>請輸入編號:<input type="text" name="id">
+        <input type="submit" value="確定送出"><br/>
+        <a href="http://127.0.0.1:8000/index/">返回</a>
+    </div>
+
+</form>
+</body>
+</html>

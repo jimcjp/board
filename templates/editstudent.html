@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增學生</title>
+</head>
+<body>
+<form action="/editstudent/{{unit.id}}/save/" method="POST" >
+    {% csrf_token %}
+    <table border="1">
+        <tr>
+            <th>姓名</th>
+            <td><input type="text" name="name" value={{unit.cName}}></td>
+        </tr>
+        <tr>
+            <th>性別</th>
+            {% if unit.cSex == 'm' %}
+            <td><input type="radio" name="sex" value="m" checked="checked">男生
+            <input type="radio" name="sex" value="f">女生</td>
+            {% else %}
+            <td><input type="radio" name="sex" value="m">男生
+            <input type="radio" name="sex" value="f" checked="checked">女生</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <th>生日</th>
+            <td><input type="text" name="birthday" value={{unit.cBirthday}}></td>
+        </tr>
+        <tr>
+            <th>email</th>
+            <td><input type="text" name="email" value={{unit.cEmail}}></td>
+        </tr>
+        <tr>
+            <th>電話</th>
+            <td><input type="text" name="phone" value={{unit.cPhone}}></td>
+        </tr>
+        <tr>
+            <th>地址</th>
+            <td><input type="text" name="add" value={{unit.cAdd}}></td>
+        </tr>
+        <tr>
+            <th colspan="2" align="center">
+            <input type="submit" value="送出">
+            <input type="reset" value="重設"></th>
+        </tr>
+
+    </table>
+    <a href="/listall/">返回</a>
+</form>
+</body>
+</html>

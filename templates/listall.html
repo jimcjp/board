@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}顯示所有資料{% endblock %}</title>
+</head>
+<body>
+    <h1>顯示student所有資料</h1>
+    {% block add %}
+    <a href="/addstudent/">新增</a>
+    <a href="/delstudent/">刪除</a>
+    {% endblock %}
+    <table border="1">
+        <th>編號</th>
+        <th>姓名</th>
+        <th>性別</th>
+        <th>生日</th>
+        <th>email</th>
+        <th>電話</th>
+        <th>地址</th>
+        {% block edit %}
+        <th>編輯</th>
+        {% endblock %}
+    {% for people in unit %}
+        <tr>
+            <td>編號:{{ people.id }}</td>
+            <td>姓名:{{ people.cName }}</td>
+            <td>性別:{{ people.cSex }}</td>
+            <td>生日:{{ people.cBirthday }}</td>
+            <td>郵件帳號:{{ people.cEmail }}</td>
+            <td>電話:{{ people.cPhone }}</td>
+            <td>地址:{{ people.cAdd }}</td>
+            {% block content %}
+            <td><a href="/editstudent/{{ people.id }}/load">編輯</a></td>
+            {% endblock %}
+        </tr>
+    {% endfor %}
+    </table>
+
+    <h2>momo首頁</h2>
+    {% if request.user.is_authenticated %}
+        歡迎光臨:{{name}}
+        <p><a href="/logout/">登出</a></p>
+    {% else %}
+        <p>你尚未登入</p>
+        <a href="/login/">登入</a>
+    {% endif %}
+    <span style = 'color:red'>{{msg}}</span>
+</body>
+</html>
